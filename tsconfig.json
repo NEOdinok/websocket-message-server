@@ -2,8 +2,15 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
-    }
+      "@/*": ["./src/*"]
+    },
+    "module": "NodeNext",
+    "target": "ES2020",
+    "moduleResolution": "NodeNext",
+
+    "esModuleInterop": true, // allow ECMAScript Modules (ESM)
+    "resolveJsonModule": true
   },
-  "include": ["tracker-client", "tracker-backend", "types.ts"]
+  "include": ["tracker-client", "tracker-backend", "types.ts", "src"],
+  "type": "module"
 }
