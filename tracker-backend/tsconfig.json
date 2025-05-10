@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "target": "ES2020",
+    "moduleResolution": "NodeNext",
+
+    "esModuleInterop": true, // allow ECMAScript Modules (ESM)
+    "resolveJsonModule": true
+  },
+  "type": "module"
+}
