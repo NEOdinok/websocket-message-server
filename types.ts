@@ -1,15 +1,10 @@
 import { z } from "zod";
 
-export const RawEventSchema = z
+export const MessageSchema = z
   .object({
-    event: z.string(),
-    tags: z.array(z.string()),
-    url: z.string(),
-    title: z.string(),
-    ts: z.number(),
+    text: z.string().min(1),
+    createdAt: z.date().default(() => new Date()),
   })
   .strict();
 
-export type RawEvent = z.infer<typeof RawEventSchema>;
-
-export const RawEventArraySchema = z.array(RawEventSchema);
+export type Message = z.infer<typeof MessageSchema>;

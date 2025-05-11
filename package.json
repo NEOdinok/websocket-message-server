@@ -7,18 +7,25 @@
     "pnpm": ">=9.0.0"
   },
   "scripts": {
-    "dev": "ts-node-dev --transpile-only src/index.ts"
+    "mongo:reset": "pkill -9 mongod || true && DB_PATH=$(if command -v brew >/dev/null 2>&1; then echo \"$(brew --prefix)/var/mongodb\"; else echo \"$HOME/data/mongodb\"; fi) && rm -rf \"$DB_PATH\"/* && mongod --dbpath \"$DB_PATH\" --replSet rs0 --port 27017 --bind_ip localhost --fork --logpath /tmp/mongo.log && sleep 1 && mongosh --eval 'rs.initiate({_id:\"rs0\", members:[{_id:0, host:\"localhost:27017\"}]})'",
+    "dev": "tsx watch src/index.ts"
   },
   "dependencies": {
+    "@fastify/cors": "^11.0.1",
     "@fastify/mongodb": "^9.0.2",
     "dotenv": "^16.5.0",
     "fastify": "^5.3.2",
+    "fastify-plugin": "^5.0.1",
+    "mongodb": "^6.16.0",
+    "node-fetch": "^3.3.2",
     "ws": "^8.18.2",
     "zod": "^3.24.4"
   },
   "devDependencies": {
     "@types/node": "^22.15.17",
+    "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3"
   },
   "packageManager": "pnpm@9.15.9+sha512.68046141893c66fad01c079231128e9afb89ef87e2691d69e4d40eee228988295fd4682181bae55b58418c3a253bde65a505ec7c5f9403ece5cc3cd37dcf2531"

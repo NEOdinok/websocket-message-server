@@ -7,10 +7,8 @@
     "module": "NodeNext",
     "target": "ES2020",
     "moduleResolution": "NodeNext",
-
-    "esModuleInterop": true, // allow ECMAScript Modules (ESM)
+    "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["tracker-client", "tracker-backend", "types.ts", "src"],
-  "type": "module"
+  "include": ["src"]
 }
